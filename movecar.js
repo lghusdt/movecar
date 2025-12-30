@@ -94,11 +94,11 @@ async function handleNotify(request, url) {
     const confirmUrl = encodeURIComponent(url.origin + '/owner-confirm');
 
     let notifyBody = '🚗 挪车请求';
-    if (message) notifyBody += `%0A💬 留言: ${message}`;
+    if (message) notifyBody += `\n💬 留言: ${message}`;
 
     if (location && location.lat && location.lng) {
       const urls = generateMapUrls(location.lat, location.lng);
-      notifyBody += '%0A📍 已附带位置信息，点击查看';
+      notifyBody += '\n📍 已附带位置信息，点击查看';
 
       await MOVE_CAR_STATUS.put('requester_location', JSON.stringify({
         lat: location.lat,
